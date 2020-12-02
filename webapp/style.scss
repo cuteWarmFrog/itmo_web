@@ -1,0 +1,52 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+header p {
+  font-size: larger;
+  font-weight: lighter;
+  text-align: center;
+}
+
+main {
+  width: 100%;
+}
+
+#interface {
+  display: flex;
+  height: 50%;
+}
+
+#graphic {
+  margin-right: 5px;
+  width: 45%;
+}
+
+#graphicCanvas {
+  border: 1px solid black;
+}
+
+#XYRChoice {
+  min-height: 400px;
+  width: 45%;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+#table {
+  box-sizing: border-box;
+  width: 80%;
+  margin: 20px 70px;
+  vertical-align: top;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+#table td {
+  text-align: center;
+  width: 20%;
+
+}
