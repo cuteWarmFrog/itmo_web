@@ -1,3 +1,11 @@
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('#submit').addEventListener('click', submit);
+    document.getElementById('graphicCanvas').addEventListener('click', (e) => {
+        processClickInput(e);
+    })
+    drawBase();
+})
+
 function drawBase() {
     let canvas = document.getElementById('graphicCanvas');
     let ctx = canvas.getContext('2d');
@@ -64,14 +72,6 @@ function drawBase() {
 
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('#submit').addEventListener('click', submit);
-    document.getElementById('graphicCanvas').addEventListener('click', (e) => {
-        processClickInput(e);
-    })
-    drawBase();
-})
-
 function processClickInput(e) {
     if(checkR()) {
         drawBase();
@@ -91,8 +91,7 @@ function putADot(x, y) {
     ctx.fill();
 }
 function sendThisShit(e) {
-    let canvas = document.getElementById('graphicCanvas');
-    let rect = canvas.getBoundingClientRect();
+    const rect = document.getElementById('graphicCanvas').getBoundingClientRect();
     let r = getNumberFromRadioInput('r');
     const width = rect.right - rect.left;
     const height = rect.bottom - rect.top;
@@ -122,20 +121,27 @@ function checkX() {
     const x = getNumberFromTextInput('#x');
     const isSuited = !(isNaN(x) || x < -5 || x > 3);
     if(!isSuited)
-        alert('X might be between -5 and 3');
+        document.getElementById('xLabel').innerText = 'X might be between -5 and 3';
     return isSuited;
-}
-
-function getNumberFromTextInput(selector) {
-    return parseFloat(document.querySelector(selector).value.replace(',', '.'));
 }
 
 function checkY() {
     const chosen = getNumberFromRadioInput('y');
     if(!chosen)
-        alert('Please, choose Y');
+        document.getElementById('yLabel').innerText = 'Please, choose Y';
     return !!chosen;
 
+}
+
+function checkR() {
+    const chosen = getNumberFromRadioInput('r');
+    if(!chosen)
+        document.getElementById('rLabel').innerText = 'Please, choose R';
+    return !!chosen;
+}
+
+function getNumberFromTextInput(selector) {
+    return parseFloat(document.querySelector(selector).value.replace(',', '.'));
 }
 
 function getNumberFromRadioInput(selector) {
@@ -147,23 +153,23 @@ function getNumberFromRadioInput(selector) {
     }
 }
 
-function checkR() {
-    const chosen = getNumberFromRadioInput('r');
-    if(!chosen)
-        alert('Please, choose R');
-    return !!chosen;
-}
-
 function sendForm(x, y ,r, isLimited) {
     const localUrl = 'http://localhost:8080/lab2-1.0-SNAPSHOT/Hello';
     const heliosUrl = 'http://0.0.0.0:12000/lab2-1.0-SNAPSHOT/Hello';
+    changeLabelsBack();
     return fetch(localUrl, {
         method: 'POST',
         body: createFormData(x, y, r, isLimited)
     })
 }
-function createFormData(x, y, r, isLimited) {
 
+function changeLabelsBack() {
+    document.getElementById('xLabel').innerText = 'X';
+    document.getElementById('yLabel').innerText = 'Y';
+    document.getElementById('rLabel').innerText = 'R';
+}
+
+function createFormData(x, y, r, isLimited) {
     const formData = new FormData();
     formData.append('x', x);
     formData.append('y', y);

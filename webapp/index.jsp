@@ -5,6 +5,7 @@
   Time: 15:37
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -28,12 +29,12 @@
             <div id="XYRChoice">
                 <form id="form">
                     <div>
-                        <label for="x">X</label><br>
+                        <label id="xLabel" for="x">X</label><br>
                         <input id="x" type="text" placeholder="-5 ... 3">
                     </div>
 
                     <div>
-                        <label>Y</label><br>
+                        <label id="yLabel">Y</label><br>
                         <label for="y1">-5</label>
                         <input id="y1" type="radio" name="y" value="-5">
 
@@ -63,7 +64,7 @@
                     </div>
 
                     <div>
-                        <label>R</label><br>
+                        <label id="rLabel">R</label><br>
 
                         <label for="r1">1</label>
                         <input id="r1" type="radio" name="r" value="1">
@@ -93,6 +94,15 @@
                 <td>Result</td>
                 <td>Time</td>
             </tr>
+            <c:forEach var="node" items="${sessionScope.recordKeeper.results}">
+                <tr>
+                    <td>${node.x}</td>
+                    <td>${node.y}</td>
+                    <td>${node.r}</td>
+                    <td>${node.hit}</td>
+                    <td>${node.time}</td>
+                </tr>
+            </c:forEach>
         </table>
     </main>
 
