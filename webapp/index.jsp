@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="style.scss">
+    <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
@@ -21,13 +21,14 @@
     <main>
         <div id="interface">
             <div id="graphic">
-                <canvas width="800px" height="400px" id="graphicCanvas">
+                <div>
 
-                </canvas>
+                    <canvas width="800px" height="400px" id="graphicCanvas"></canvas>
+                </div>
             </div>
 
             <div id="XYRChoice">
-                <form id="form">
+                <div id="form">
                     <div>
                         <label id="xLabel" for="x">X</label><br>
                         <input id="x" type="text" placeholder="-5 ... 3">
@@ -81,8 +82,8 @@
                         <label for="r5">3</label>
                         <input id="r5" type="radio" name="r" value="3">
                     </div>
-                </form>
-                <button id="submit">Check</button>
+                    <button id="submit">Check</button>
+                </div>
             </div>
         </div>
 

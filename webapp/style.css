@@ -10,17 +10,19 @@ header p {
 }
 
 main {
-  width: 100%;
+  width: 100vw;
 }
 
 #interface {
   display: flex;
-  height: 50%;
+  height: auto;
 }
 
 #graphic {
-  margin-right: 5px;
-  width: 45%;
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+
 }
 
 #graphicCanvas {
@@ -28,10 +30,9 @@ main {
 }
 
 #XYRChoice {
-  min-height: 400px;
-  width: 45%;
-  align-items: center;
+  display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 
@@ -49,4 +50,10 @@ main {
   text-align: center;
   width: 20%;
 
+}
+
+@media screen and (max-width: 1280px) {
+  #interface {
+    display: block;
+  }
 }
